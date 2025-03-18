@@ -24,5 +24,5 @@
                printf("%d: empate : %s = %s\n", j, pessoa1, pessoa2);
            }
         }   
-    return 0;
-}
+        return 0;
+    }
