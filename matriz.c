@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>    
 #include <string.h>
 
 //Ja peço perdao por não fazer o uso de funções neste código professor.
@@ -11,10 +10,10 @@ int main(){
     scanf("%d", &nCasos);
     for(int i = 0; i < nCasos; i++){
         scanf("%d", &tamMatriz);
-        int matriz[tamMatriz][tamMatriz];
+        int matriz[10][10];
         for(int j = 0; j < tamMatriz; j++){
             for(int k = 0; k < tamMatriz; k++){
-                scanf("%d", &matriz[j][k]);
+                scanf("%1d", &matriz[j][k]);
             }
         }
         scanf("%d", &qtdOperacao);
@@ -48,33 +47,37 @@ int main(){
             }
             //TROCA COLUNA
             else if(strcmp(operacao, "col") == 0){
-                scanf("%d", &a);
-                scanf("%d", &b);
-                int temp = matriz[i][a - 1];
-                matriz[i][a - 1] = matriz[i][b - 1];
-                matriz[i][b - 1] = temp;
+                scanf("%d %d", &a, &b);
+                a--;
+                b--;
+                for (int i = 0; i < tamMatriz; i++) {
+                    int temp = matriz[i][a];
+                    matriz[i][a] = matriz[i][b];
+                    matriz[i][b] = temp;
+                }
             }
             //TROCA LINHA
             else if(strcmp(operacao, "row") == 0){
-                scanf("%d", &a);
-                scanf("%d", &b);
+                scanf("%d %d", &a, &b);
+                a--;
+                b--;
                 for (int i = 0; i < tamMatriz; i++) {
-                    int temp = matriz[a - 1][i];
-                    matriz[a - 1][i] = matriz[b - 1][i];
-                    matriz[b - 1][i] = temp;
-                  }
+                    int temp = matriz[a][i];
+                    matriz[a][i] = matriz[b][i];
+                    matriz[b][i] = temp;
+                }
             }
         }
-
+    
         //IMPRIME A MATRIZ
-        printf("CASE #%d \n", i + 1);
+        printf("Case #%d\n", i + 1);
         for(int j = 0; j < tamMatriz; j++){
             for(int k = 0; k < tamMatriz; k++){
-                printf("%d ", matriz[j][k]);
+                printf("%d", matriz[j][k]);
             }
             printf("\n");
         }
-
+        printf("\n");
     }
     return 0;
 }
