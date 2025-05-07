@@ -1,13 +1,10 @@
 #include <stdio.h>
 
-// este código está horripilante, penso que poderia fazer algo apenas com n e decrescer 1 ou algo do tipo na função recursiva, deixei desse jeito pois foi a maneira que pensei "logo de cara".
-
 int somaN(int n, int clock, int a){  
     if(clock == n ){
         return 0;
     }
-    clock++;
-    return a + somaN(n, clock, a + 1);
+    return a + somaN(n, clock + 1, a + 1);
 }
 
 int main(){
